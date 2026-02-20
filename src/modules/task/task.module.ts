@@ -10,6 +10,5 @@ import { Task } from 'src/modules/task/task.entity';
   controllers: [TasksController],
   providers: [TaskService],
   exports: [],
-  // Add any other necessary configurations or modules
 })
 export class TaskModule {}
