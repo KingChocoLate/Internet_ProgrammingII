@@ -1,1 +1,3 @@
-# gic2024
+# gic2026
+## Internet Programming II
+**Sophat Odom**
