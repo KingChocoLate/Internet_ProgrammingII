@@ -14,25 +14,28 @@ import { createUserDto } from './dto/create-user.dto';
 export class UsersController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('/:username')
-  getUser(@Param('username') username: string) {
-    return this.userService.getUser(username);
+  @Post()
+  create(@Body() body: createUserDto) {
+    return this.userService.create(body);
   }
 
-  @Post('/')
-  createUser(@Body() body: createUserDto) {
-    return this.userService.createUser(body);
+  @Get()
+  findAll() {
+    return this.userService.findAll();
   }
 
-  @Patch('/:username')
-  updateUser(
-    @Body() body: { username: string; email: string; password: string },
-  ) {
-    return this.userService.updateUser(body);
+  @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.userService.findOne(+id);
   }
 
-  @Delete('/users/:username')
-  deleteUser(@Param('username') username: string) {
-    return this.userService.deleteUser(username);
+  @Patch('/:id')
+  update(@Param('id') id: string, @Body() body: Partial<createUserDto>) {
+    return this.userService.update(+id, body);
+  }
+
+  @Delete('/:id')
+  remove(@Param('id') id: string) {
+    return this.userService.remove(+id);
   }
 }
