@@ -31,4 +31,8 @@ export class TaskService {
   remove(id: number) {
     return this.tasksRepo.delete(id);
   }
+
+  clearAll() {
+    return this.tasksRepo.clear();
+  }
 }
