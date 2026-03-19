@@ -16,7 +16,7 @@ export class ReceiptsService {
     return this.receiptRepo.find({ order: { issuedAt: 'DESC' } });
   }
 
-  async findOne(receiptId: string) {
+  async findOne(receiptId: number) {
     const receipt = await this.receiptRepo.findOne({ where: { receiptId } });
     if (!receipt) throw new NotFoundException('Receipt not found');
     return receipt;
@@ -31,7 +31,7 @@ export class ReceiptsService {
     return this.receiptRepo.save(receipt);
   }
 
-  async update(receiptId: string, dto: UpdateReceiptDto) {
+  async update(receiptId: number, dto: UpdateReceiptDto) {
     const receipt = await this.findOne(receiptId);
 
     if (dto.issuedAt !== undefined) receipt.issuedAt = new Date(dto.issuedAt);
@@ -41,7 +41,7 @@ export class ReceiptsService {
     return this.receiptRepo.save(receipt);
   }
 
-  async remove(receiptId: string) {
+  async remove(receiptId: number) {
     const receipt = await this.findOne(receiptId);
     await this.receiptRepo.remove(receipt);
     return { deleted: true, receiptId };

@@ -24,7 +24,7 @@ export class ReceiptsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.receiptsService.findOne(id);
   }
 
@@ -34,12 +34,12 @@ export class ReceiptsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateReceiptDto) {
+  update(@Param('id') id: number, @Body() dto: UpdateReceiptDto) {
     return this.receiptsService.update(id, dto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.receiptsService.remove(id);
   }
 }
