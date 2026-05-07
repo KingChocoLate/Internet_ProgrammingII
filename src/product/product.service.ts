@@ -19,6 +19,10 @@ export class ProductsService {
     return this.productRepository.findAll();
   }
 
+  findOne(id: number) {
+    return this.productRepository.findByPk(id);
+  }
+
   update(id: number, updateProductDto: any) {
     return this.productRepository.update(updateProductDto as any, {
       where: { id },

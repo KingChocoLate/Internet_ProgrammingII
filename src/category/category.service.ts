@@ -19,6 +19,10 @@ export class CategoriesService {
     return this.categoryRepository.findAll();
   }
 
+  findOne(id: number) {
+    return this.categoryRepository.findByPk(id);
+  }
+
   update(id: number, updateCategoryDto: UpdateCategoryDto) {
     const result = this.categoryRepository.update(updateCategoryDto as any, {
       where: { id },
