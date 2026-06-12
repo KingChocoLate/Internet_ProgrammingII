@@ -1,5 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { loginAsStandardUser } from './helpers/auth';
+import { login, loginAsStandardUser } from './helpers/auth';
+
+test('login fails with locked out user', async ({ page }) => {
+    await login(page, 'locked_out_user', 'secret_sauce');
+
+    await expect(page.locator('[data-test="error"]'))
+      .toContainText('Sorry, this user has been locked out');
+});
 
 test.describe('Challenge tests', () => {
   test.beforeEach(async ({ page }) => {
